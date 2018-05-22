@@ -19,7 +19,7 @@ class DateViewController: UIViewController, UNUserNotificationCenterDelegate {
     var meetingTime: Date!
 
 //    var datePicker = UIDatePicker() remove?
-    var time = Date()
+   // var time = Date()
     var isGrantedNotificationAccess = false
 
     @IBOutlet weak var meetingPicker: UIDatePicker!
@@ -32,17 +32,17 @@ class DateViewController: UIViewController, UNUserNotificationCenterDelegate {
     
     @IBOutlet weak var oneHour: UISwitch!
     
-    @IBAction func meetingAction(_ sender: Any) {
+
+    @IBAction func setCreateMeeting(_ sender: Any) {
         let dateFormatter = DateFormatter()
         let meetingTime = meetingPicker.date
         
-//        meetingTime.timeIntervalSinceNow remove?
+        //        meetingTime.timeIntervalSinceNow remove?
         print(meetingTime)
-
+        
         let defaults = UserDefaults.standard
         let meeting = defaults.integer(forKey: "meetingTime") //remove? --> This is getting not setting the meeting time
     }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "saveDate" {
             let dateFormatter = DateFormatter()
@@ -54,9 +54,9 @@ class DateViewController: UIViewController, UNUserNotificationCenterDelegate {
             stringDate = dateFormatter.string(from: meetingTime)
         }
     }
-        
+    
     @IBAction func createMeeting(_ sender: UIButton) {
-        meetingTime = meetingPicker.date
+    meetingTime = meetingPicker.date
         var secondDifference = meetingTime.timeIntervalSinceNow
         if oneHour.isOn {
             let content = UNMutableNotificationContent()
@@ -152,10 +152,13 @@ class DateViewController: UIViewController, UNUserNotificationCenterDelegate {
             //adding the notification to notification center
             UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
             
+        }
     }
-    }
-    // if let timer is nil, timer invalidate
-  
+    
+    
+    
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
         UNUserNotificationCenter.current().requestAuthorization(

@@ -9,7 +9,7 @@
 import UIKit
 
 class AddMeetingViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    var time = TimeCalc()
+   // var time = TimeCalc()
     var actionList = ["Tutor", "Location", "Purpose", "Date"]
     var subtitleList = ["", "", "", ""]
     @IBOutlet weak var tableView: UITableView!
@@ -87,7 +87,7 @@ class AddMeetingViewController: UIViewController, UITableViewDataSource, UITable
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "saveNewMeeting" {
-            subtitleList = [subtitleList.first!]
+            subtitleList = [ subtitleList[0], subtitleList[1], subtitleList[2], subtitleList[3] ]
         }
 //        if let dateViewController = segue.destination.childViewControllers.first as? DateViewController {
 ////                dateViewController.time = self.time

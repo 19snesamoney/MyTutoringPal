@@ -25,6 +25,7 @@
 		7463ECCF20642A5B00F314F9 /* Tab_BarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7463ECCE20642A5B00F314F9 /* Tab_BarTests.swift */; };
 		7463ECDA20642A5B00F314F9 /* Tab_BarUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7463ECD920642A5B00F314F9 /* Tab_BarUITests.swift */; };
 		74B8EBD42069546C00C5E31E /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 74B8EBD32069546C00C5E31E /* .gitignore */; };
+		E2AC7DB620B21598000A730C /* ExpandableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AC7DB520B21598000A730C /* ExpandableHeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,7 @@
 		7463ECDB20642A5B00F314F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		74B8EBD32069546C00C5E31E /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = SOURCE_ROOT; };
 		74B8EBD920695D7100C5E31E /* AlertsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertsViewController.swift; sourceTree = "<group>"; };
+		E2AC7DB520B21598000A730C /* ExpandableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				270BE52020AA08420083976C /* Section.swift */,
+				E2AC7DB520B21598000A730C /* ExpandableHeaderView.swift */,
 			);
 			path = ExpandableHeaderView;
 			sourceTree = "<group>";
@@ -310,6 +313,7 @@
 				7463ECBC20642A5B00F314F9 /* GoalsViewController.swift in Sources */,
 				7463ECB820642A5B00F314F9 /* AppDelegate.swift in Sources */,
 				7463ECBA20642A5B00F314F9 /* MeetingViewController.swift in Sources */,
+				E2AC7DB620B21598000A730C /* ExpandableHeaderView.swift in Sources */,
 				270BE52120AA08420083976C /* Section.swift in Sources */,
 				1D287C0A206ACA2D00A1E499 /* DateViewController.swift in Sources */,
 				27F19E0C206EB33B00562388 /* AddTaskViewController.swift in Sources */,

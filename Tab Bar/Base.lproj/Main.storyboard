@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -26,9 +27,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" text="Meetings" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="kGW-SQ-shO">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Meetings" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="kGW-SQ-shO">
                                 <rect key="frame" x="126" y="20" width="122" height="43"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="Didot" family="Didot" pointSize="30"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -39,24 +39,39 @@
                                 <color key="backgroundColor" red="0.96865373850000003" green="0.79141122100000005" blue="0.78972548249999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="sectionIndexBackgroundColor" red="0.96865373850000003" green="0.79141122100000005" blue="0.78972548249999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cellReuseThing" id="tLe-ux-lsw">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="labelCell" textLabel="hcL-aS-k4F" style="IBUITableViewCellStyleDefault" id="pGl-Gw-bxd">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tLe-ux-lsw" id="puv-yv-KkM">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pGl-Gw-bxd" id="Oeh-H5-2Vu">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hcL-aS-k4F">
+                                                    <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.96865373849868774" green="0.79141122102737427" blue="0.78972548246383667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="9pv-A4-QxB" id="Bn9-12-tB3"/>
+                                    <outlet property="delegate" destination="9pv-A4-QxB" id="Dvf-26-9lx"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" red="0.96865373849868774" green="0.79141122102737427" blue="0.78972548246383667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Pbr-ZH-Y1Z" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" id="6CK-vM-2AL"/>
-                            <constraint firstItem="Pbr-ZH-Y1Z" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" id="NcR-Qh-rVX"/>
-                            <constraint firstItem="Pbr-ZH-Y1Z" firstAttribute="bottom" secondItem="PQr-Ze-W5v" secondAttribute="bottom" id="agG-fA-Bdq"/>
-                            <constraint firstItem="Pbr-ZH-Y1Z" firstAttribute="trailing" secondItem="PQr-Ze-W5v" secondAttribute="trailing" id="rje-bx-yeM"/>
+                            <constraint firstItem="Pbr-ZH-Y1Z" firstAttribute="top" secondItem="kGW-SQ-shO" secondAttribute="bottom" constant="1" id="1iR-QG-oPF"/>
+                            <constraint firstAttribute="trailing" secondItem="Pbr-ZH-Y1Z" secondAttribute="trailing" id="73J-XL-fmL"/>
+                            <constraint firstItem="Pbr-ZH-Y1Z" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" id="IOF-3X-zSh"/>
+                            <constraint firstItem="Pbr-ZH-Y1Z" firstAttribute="bottom" secondItem="PQr-Ze-W5v" secondAttribute="bottom" id="XCm-pZ-vQx"/>
+                            <constraint firstItem="Pbr-ZH-Y1Z" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" id="Y99-uF-nMl"/>
+                            <constraint firstItem="kGW-SQ-shO" firstAttribute="top" secondItem="tsR-hK-woN" secondAttribute="topMargin" constant="-44" id="o9r-pK-uqd"/>
+                            <constraint firstItem="kGW-SQ-shO" firstAttribute="centerX" secondItem="Pbr-ZH-Y1Z" secondAttribute="centerX" id="xOG-9S-GOg"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>
@@ -278,8 +293,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <state key="normal" title="Set Alerts!"/>
                                 <connections>
-                                    <action selector="createMeeting:" destination="WzP-Uu-Q0j" eventType="touchUpInside" id="5Wn-qF-zIQ"/>
-                                    <action selector="meetingAction:" destination="WzP-Uu-Q0j" eventType="touchUpInside" id="S5Z-L8-BMj"/>
+                                    <action selector="createMeeting:" destination="WzP-Uu-Q0j" eventType="touchUpInside" id="gOh-A3-Cht"/>
+                                    <action selector="setCreateMeeting:" destination="WzP-Uu-Q0j" eventType="touchUpInside" id="FGA-KA-zWg"/>
                                 </connections>
                             </button>
                         </subviews>
