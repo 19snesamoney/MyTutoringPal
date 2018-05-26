@@ -7,7 +7,7 @@
 //
 
 import Foundation
-struct Section {
+struct Section : Codable{
     var purpose: String!
     var location: String!
     var tutor: String!

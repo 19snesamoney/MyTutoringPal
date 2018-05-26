@@ -10,7 +10,7 @@ import UIKit
 
 class AddMeetingViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
    // var time = TimeCalc()
-    var actionList = ["Tutor", "Location", "Purpose", "Date"]
+    var sections = ["Tutor", "Location", "Purpose", "Date"]
     var subtitleList = ["", "", "", ""]
     @IBOutlet weak var tableView: UITableView!
     
@@ -28,15 +28,15 @@ class AddMeetingViewController: UIViewController, UITableViewDataSource, UITable
     //Segue assignment for different view controllers
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
-        performSegue(withIdentifier: actionList[indexPath.row], sender: self)
+        performSegue(withIdentifier: sections[indexPath.row], sender: self)
     }
     
     // Unwind Save Button For Purpose
     @IBAction func unwindSaveNewToDo(unwindSegue: UIStoryboardSegue) {
         if let addPurposeVC = unwindSegue.source as? AddPurposeViewController {
             if addPurposeVC.newPurpose.count != 0 {
-                subtitleList.remove(at: actionList.index(of: "Purpose")!)
-                subtitleList.insert(addPurposeVC.newPurpose, at: actionList.index(of: "Purpose")!)
+                subtitleList.remove(at: sections.index(of: "Purpose")!)
+                subtitleList.insert(addPurposeVC.newPurpose, at: sections.index(of: "Purpose")!)
             }
         }
     }
@@ -45,8 +45,8 @@ class AddMeetingViewController: UIViewController, UITableViewDataSource, UITable
     @IBAction func unwindSaveNewLocation(unwindSegue: UIStoryboardSegue) {
         if let addLocationVC = unwindSegue.source as? AddLocationViewController {
             if addLocationVC.newLocation.count != 0 {
-                subtitleList.remove(at: actionList.index(of: "Location")!)
-                subtitleList.insert(addLocationVC.newLocation, at: actionList.index(of: "Location")!)
+                subtitleList.remove(at: sections.index(of: "Location")!)
+                subtitleList.insert(addLocationVC.newLocation, at: sections.index(of: "Location")!)
             }
         }
     }
@@ -55,8 +55,8 @@ class AddMeetingViewController: UIViewController, UITableViewDataSource, UITable
     @IBAction func unwindSaveNewTutor(unwindSegue: UIStoryboardSegue) {
         if let addTutorVC = unwindSegue.source as? AddTutorViewController {
             if addTutorVC.newTutor.count != 0 {
-                subtitleList.remove(at: actionList.index(of: "Tutor")!)
-                subtitleList.insert(addTutorVC.newTutor, at: actionList.index(of: "Tutor")!)
+                subtitleList.remove(at: sections.index(of: "Tutor")!)
+                subtitleList.insert(addTutorVC.newTutor, at: sections.index(of: "Tutor")!)
             }
         }
     }
@@ -65,8 +65,9 @@ class AddMeetingViewController: UIViewController, UITableViewDataSource, UITable
     @IBAction func unwindSaveNewDate(unwindSegue: UIStoryboardSegue) {
         if let addDateVC = unwindSegue.source as? DateViewController {
             if addDateVC.stringDate.count != 0 {
-                subtitleList.remove(at: actionList.index(of: "Date")!)
-                subtitleList.insert(addDateVC.stringDate, at: actionList.index(of: "Date")!)
+                subtitleList.remove(at: sections.index(of: "Date")!)
+                subtitleList.insert(addDateVC.stringDate, at: sections.index(of: "Date")!)
+                
             }
         }
     }
@@ -82,7 +83,7 @@ class AddMeetingViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return actionList.count
+        return sections.count
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -98,7 +99,7 @@ class AddMeetingViewController: UIViewController, UITableViewDataSource, UITable
     //    Text for table view cells
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellReuseIdentifier")
-        let text = actionList[indexPath.row]
+        let text = sections[indexPath.row]
         let subtitle = subtitleList[indexPath.row]
         cell!.textLabel?.text = text
         cell!.detailTextLabel?.text = subtitle

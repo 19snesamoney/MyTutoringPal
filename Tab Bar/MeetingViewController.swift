@@ -14,13 +14,7 @@ class MeetingViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var editButton: UIBarButtonItem!
     var defaultMeetingNumber: Int = 1
     
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        tableView.dataSource = self
-    }
-    
-//    //  Make edit button work
+    //  Make edit button work
     @IBAction func edit(_ sender: Any) {
         tableView.isEditing = !tableView.isEditing
         switch tableView.isEditing {
@@ -30,27 +24,45 @@ class MeetingViewController: UIViewController, UITableViewDelegate, UITableViewD
             editButton.title = "Edit"
         }
     }
-
+    
     //Allows reordering of table cells
     func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         return true
     }
-
+    
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         let item = sections[sourceIndexPath.section]
         sections.remove(at: sourceIndexPath.section)
         sections.insert(item, at: destinationIndexPath.section)
+        let defaults = UserDefaults.standard
+        defaults.set(sections, forKey: "NewMeeting")
     }
-
+    
     //Delete function
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCellEditingStyle.delete {
             sections.remove(at: indexPath.section)
             tableView.reloadData()
+            let encoder = JSONEncoder()
+            if let encoded = try? encoder.encode(sections) {
+                let defaults = UserDefaults.standard
+                defaults.set(encoded, forKey: "NewMeeting")
+            }
         }
     }
     
-    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        tableView.dataSource = self
+        let defaults = UserDefaults.standard
+        if let savedSections = defaults.object(forKey: "NewMeeting") as? Data {
+            let decoder = JSONDecoder()
+            if let loadedSections = try? decoder.decode([Section].self, from: savedSections) {
+                sections = loadedSections
+            }
+        }
+    }
+
     override func viewWillAppear(_ animated: Bool) {
         tableView.reloadData()
         super.viewWillAppear(animated)
@@ -67,10 +79,25 @@ class MeetingViewController: UIViewController, UITableViewDelegate, UITableViewD
                         defaultMeetingNumber += 1
                     }
                     sections.append(Section(purpose: purpose, location: newMeetingVC.subtitleList[1], tutor: newMeetingVC.subtitleList[0], time: newMeetingVC.subtitleList[3], expanded: false))
+                    
+                    let encoder = JSONEncoder()
+                    if let encoded = try? encoder.encode(sections) {
+                        let defaults = UserDefaults.standard
+                        defaults.set(encoded, forKey: "NewMeeting")
+                    }
+                    //sections.append(Section(purpose: "purpose", location: "location", tutor: "tutor", time: "time", expanded: false))
+        
+
+                    
+                    
+                   
                 }
+                
+                
             }
         }
     }
+    //segue?
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return sections.count
@@ -125,6 +152,7 @@ class MeetingViewController: UIViewController, UITableViewDelegate, UITableViewD
             tableView.reloadRows(at: [IndexPath(row: i, section: section)], with: .automatic)
         }
         tableView.endUpdates()
+    
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

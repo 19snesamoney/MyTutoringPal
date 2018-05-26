@@ -59,6 +59,8 @@ class DateViewController: UIViewController, UNUserNotificationCenterDelegate {
     meetingTime = meetingPicker.date
         var secondDifference = meetingTime.timeIntervalSinceNow
         if oneHour.isOn {
+            self.alertsFeedback.text = "Alerts set!"
+
             let content = UNMutableNotificationContent()
             content.title = "Meeting alert"
             content.body = "You have a meeting in an hour!"
@@ -78,6 +80,8 @@ class DateViewController: UIViewController, UNUserNotificationCenterDelegate {
             UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
             
         } else if fiveMins.isOn {
+            self.alertsFeedback.text = "Alerts set!"
+
             let content = UNMutableNotificationContent()
             content.title = "Meeting alert"
             content.body = "You have a meeting in 5 minutes!"
@@ -95,8 +99,11 @@ class DateViewController: UIViewController, UNUserNotificationCenterDelegate {
             
             //adding the notification to notification center
             UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+
             
         } else if thirtyMins.isOn {
+            self.alertsFeedback.text = "Alerts set!"
+
             let content = UNMutableNotificationContent()
             content.title = "Meeting alert"
             content.body = "You have a meeting in thirty minutes!"
@@ -114,8 +121,12 @@ class DateViewController: UIViewController, UNUserNotificationCenterDelegate {
             //adding the notification to notification center
             UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
             
+
+            
         }
         else if oneDay.isOn {
+            self.alertsFeedback.text = "Alerts set!"
+
             let content = UNMutableNotificationContent()
             content.title = "Meeting alert"
             content.body = "You have a meeting on " + String(describing: meetingPicker.date)
@@ -133,7 +144,9 @@ class DateViewController: UIViewController, UNUserNotificationCenterDelegate {
             
             //adding the notification to notification center
             UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+
         } else if twoDays.isOn {
+            self.alertsFeedback.text = "Alerts set!"
             let content = UNMutableNotificationContent()
             content.title = "Meeting alert"
             content.body = "You have a meeting on " + String(describing: meetingPicker.date)
@@ -151,10 +164,12 @@ class DateViewController: UIViewController, UNUserNotificationCenterDelegate {
             
             //adding the notification to notification center
             UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+
             
         }
     }
     
+    @IBOutlet weak var alertsFeedback: UILabel!
     
     
 
